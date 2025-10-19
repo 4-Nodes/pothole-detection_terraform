@@ -38,13 +38,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=apply-plan.tfplan
-
-      - name: Upload Terraform Plan
-        uses: actions/upload-artifact@v4
-        with:
-          name: terraform-plan
-          path: apply-plan.tfplan
+        run: terraform plan
 
   terraform-apply:
     name: Terraform Apply
@@ -71,8 +65,11 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
+      - name: Terraform Init
+        run: terraform init
+
       - name: Terraform Apply
-        run: terraform apply apply-plan.tfplan
+        run: terraform apply -auto-approve
 
   terraform-destroy-plan:
     name: Terraform Destroy Plan
@@ -99,14 +96,8 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Terraform Destroy Plan
-        run: terraform plan -destroy -out=destroy.tfplan
-
-      - name: Upload Terraform Destroy Plan
-        uses: actions/upload-artifact@v4
-        with:
-          name: terraform-destroy-plan
-          path: destroy.tfplan
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
 
   terraform-destroy-apply:
     name: Terraform Destroy Apply
@@ -125,13 +116,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download Terraform Destroy Plan
-        uses: actions/download-artifact@v4
-        with:
-          name: terraform-destroy-plan
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
+      - name: Terraform Init
+        run: terraform init
+
       - name: Terraform Destroy Apply
-        run: terraform apply destroy.tfplan
+        run: terraform destroy -auto-approve
