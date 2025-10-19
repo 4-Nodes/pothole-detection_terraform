@@ -1,47 +1,47 @@
 variable "region" {
-  default = "af-south-1"
+  description = "AWS Region"
 }
 
 variable "az_a" {
-  default = "af-south-1a"
+  description = "Availablity Zone A"
 }
 
 variable "az_b" {
-  default = "af-south-1a"
+  description = "Availablity Zone B"
 }
 
 variable "vpc_cidr_block" {
-  default = "10.0.0.0/24"
+  description = "CIDR block for VPC"
 }
 
 variable "db_subnet_a" {
-  default = "10.0.0.0/27"
+  description = "Subnet for the DB instance that'll be in AZ A"
 }
 
 variable "ecs_subnet_a" {
-  default = "10.0.0.32/27"
+  description = "Subnet for ECS in AZ A"
 }
 
 variable "reserved_subnet_a" {
-  default = "10.0.0.96/27"
+  description = "Reserved subnet range in AZ A"
 }
 
 variable "gw_subnet_a" {
-  default = "10.0.0.64/27"
+  description = "Subnet for API Gateway in AZ A"
 }
 
 variable "db_subnet_b" {
-  default = "10.0.0.128/27"
+  description = "Subnet for the DB instance that'll be in AZ B"
 }
 
 variable "ecs_subnet_b" {
-  default = "10.0.0.160/27"
+  description = "Subnet for ECS in AZ B"
 }
 
 variable "gw_subnet_b" {
-  default = "10.0.0.192/27"
+  description = "Subnet for API Gateway in AZ B"
 }
 
 variable "reserved_subnet_b" {
-  default = "10.0.0.224/27"
+  description = "Reserved subnet range in AZ B"
 }
