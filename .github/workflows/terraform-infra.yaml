@@ -57,11 +57,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download Terraform Plan
-        uses: actions/download-artifact@v4
-        with:
-          name: terraform-plan
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
