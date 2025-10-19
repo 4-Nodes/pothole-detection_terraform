@@ -91,8 +91,8 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve
+      - name: Terraform Destroy Plan
+        run: terraform plan -destroy
 
   terraform-destroy-apply:
     name: Terraform Destroy Apply
