@@ -63,6 +63,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Download Terraform Plan
+        uses: actions/download-artifact@v4
+        with:
+          name: terraform-plan
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
@@ -94,7 +99,7 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Terraform Destroy
+      - name: Terraform Destroy Plan
         run: terraform plan -destroy -out=destroy.tfplan
 
       - name: Upload Terraform Destroy Plan
