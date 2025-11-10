@@ -11,6 +11,9 @@ on:
           - terrform-apply
           - terrform-destroy-apply
 
+env:
+  GHCR_PAT: ${{ secrets.GHCR_PAT }}
+
 jobs:
   terraform-plan:
     name: Terraform Plan
@@ -38,7 +41,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var="ghcr_token=${GHCR_PAT}"
 
   terraform-apply:
     name: Terraform Apply
@@ -64,7 +67,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="ghcr_token=${GHCR_PAT}"
 
   terraform-destroy-plan:
     name: Terraform Destroy Plan
