@@ -31,7 +31,7 @@ resource "aws_ecs_task_definition" "pothole_detection_task" {
           protocol      = "tcp"
         }
       ]
-      repositoryCredentials = { credentialsParameter = data.aws_secretsmanager_secret.ghcr_token.arn }
+      repositoryCredentials = { credentialsParameter = aws_secretsmanager_secret_version.ghcr_token_version.arn }
       logConfiguration = {
         logDriver = "awslogs"
         options = {
