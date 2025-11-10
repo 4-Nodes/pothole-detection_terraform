@@ -2,6 +2,10 @@ variable "region" {
   description = "AWS Region"
 }
 
+variable "tag" {
+  description = "Project tag"
+}
+
 variable "az_a" {
   description = "Availablity Zone A"
 }
@@ -44,4 +48,9 @@ variable "gw_subnet_b" {
 
 variable "reserved_subnet_b" {
   description = "Reserved subnet range in AZ B"
+}
+
+variable "ghcr_token" {
+  description = "GitHub Container Registry PAT for private image"
+  sensitive   = true
 }

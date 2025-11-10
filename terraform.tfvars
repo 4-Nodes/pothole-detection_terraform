@@ -1,4 +1,5 @@
 region = "af-south-1"
+tag = "pothole-detection"
 az_a = "af-south-1a"
 az_b = "af-south-1b"
 vpc_cidr_block = "10.0.0.0/24"
